@@ -1,0 +1,4 @@
+<select name="items" (change)="onSelect($event)">
+  <option value="" disabled="disabled" selected="selected">{{ default }}</option>
+  <option *ngFor="let item of items" [value]="item.value">{{ item.display }}</option>
+</select>
