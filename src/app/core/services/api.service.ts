@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../environments/environment';
+import { environment } from '../../../environments/environment';
+import { map } from 'rxjs/operators';
+import { DrawResultAdapter } from '../models/api.models';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +12,14 @@ export class ApiService {
 
   API_URL = `${environment.apiUrl}/api/drawings/euroJackpot`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private adapter: DrawResultAdapter) { }
 
   getDrawings(d: Date): Observable<any> {
     const date = this.formatDate(d);
-    return this.http.get(`${this.API_URL}/${date}`);
+    return this.http.get(`${this.API_URL}/${date}`)
+      .pipe(
+        map(response => this.adapter.adapt(response)),
+      );
   }
 
   formatDate(date: Date, sep?: string): string {
