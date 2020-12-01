@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../api.service';
+import { ApiService } from '../core/services/api.service';
 
 @Component({
   selector: 'app-first-step',
@@ -14,11 +14,11 @@ export class FirstStepComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const startDate = new Date();
-    const endDate = new Date();
-    endDate.setDate(new Date().getDate() - 7); // Last week results
+    const t = new Date().getDate() + (6 - new Date().getDay() - 3) - 7;
+    const lastFriday = new Date();
+    lastFriday.setDate(t);
 
-    this.items = this.getDates(startDate, endDate).map(date => {
+    this.items = this.getLatestDraws(lastFriday, 10).map(date => {
       return {value: this.api.formatDate(date, '-'), display: this.api.formatDate(date, '-')};
     });
   }
@@ -27,13 +27,11 @@ export class FirstStepComponent implements OnInit {
     this.router.navigate(['results', selectedItem]);
   }
 
-  getDates(startDate: Date, endDate: Date): Date[] {
+  getLatestDraws(lastFriday: Date, n: number): Date[] {
     const dates = new Array();
-    const currentDate = startDate;
-
-    while (currentDate > endDate) {
-      dates.push(new Date(currentDate));
-      currentDate.setDate(currentDate.getDate() - 1);
+    for (let i = 0; i < n; i++) {
+      dates.push(new Date(lastFriday));
+      lastFriday.setDate(lastFriday.getDate() - 7);
     }
     return dates;
   }
