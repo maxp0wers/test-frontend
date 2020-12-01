@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FirstStepComponent } from './first-step.component';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('FirstStepComponent', () => {
   let component: FirstStepComponent;
@@ -8,7 +10,11 @@ describe('FirstStepComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FirstStepComponent ]
+      declarations: [ FirstStepComponent ],
+      imports: [
+        RouterModule.forRoot([]),
+        HttpClientModule,
+      ],
     })
     .compileComponents();
   }));
