@@ -1,8 +1,20 @@
-<table>
-  <tr>
-    <th *ngFor="let column of columns">{{ column | titlecase }}</th>
+<table role="table">
+  <thead role="rowgroup">
+  <tr role="row">
+    <th role="columnheader" *ngFor="let column of columns">{{ column | titlecase }}</th>
   </tr>
-  <tr *ngFor="let row of data">
-    <td *ngFor="let column of columns">{{ row[column] }}</td>
+  </thead>
+  <tbody role="rowgroup" *ngIf="!loading; else loadingItems">
+  <tr role="row" *ngFor="let row of data">
+    <td role="cell" *ngFor="let column of columns" [attr.data-th]="column">{{ row[column] }}</td>
   </tr>
+  </tbody>
+  <ng-template #loadingItems>
+    <tbody role="rowgroup">
+    <tr role="row">
+      <td role="cell" [colSpan]="columns.length" style="text-align: center">...</td>
+    </tr>
+    </tbody>
+  </ng-template>
 </table>
+
