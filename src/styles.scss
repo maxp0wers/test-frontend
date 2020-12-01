@@ -1,1 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: "DaxlinePro";
+  src: url('src/assets/fonts/DaxlinePro-Black.ttf') format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DaxlinePro";
+  src: url('src/assets/fonts/DaxlinePro-ExtraBold.ttf') format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DaxlinePro";
+  src: url('src/assets/fonts/DaxlinePro-Bold.ttf') format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DaxlinePro";
+  src: url('src/assets/fonts/DaxlinePro-Medium.ttf') format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DaxlinePro";
+  src: url('src/assets/fonts/DaxlinePro-Regular.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DaxlinePro";
+  src: url('src/assets/fonts/DaxlinePro-Thin.ttf') format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DaxlinePro";
+  src: url('src/assets/fonts/DaxlinePro-Light.ttf') format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+html, body {
+  font-family: "DaxlinePro", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.container, html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  background-color: #f6c658;
+}
+
+header {
+  background-color: #fff;
+}
+
+.content {
+  flex: 2;
+  display: flex;
+}
