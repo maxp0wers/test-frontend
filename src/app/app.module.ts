@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { NgLottolandModule } from 'ng-lottoland';
 import { FirstStepComponent } from './first-step/first-step.component';
 import { ResultsComponent } from './results/results.component';
-import { ApiService } from './api.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -21,9 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     NgLottolandModule,
   ],
-  providers: [
-    { provide: ApiService, useClass: ApiService },
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
